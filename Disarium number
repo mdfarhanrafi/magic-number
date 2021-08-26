@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+#include<vector>
+#include<set>
+#include<string>
+#define ll long long 
+#define vi vector<int>
+#define vs vector<string>
+#define vst vector<string>::iterator
+#define vit vector<int>::iterator
+using namespace std;
+// disarium number means if sum of the digits powered with their respected position is equal to the given number.
+int count(int n){
+	int cnt=0;
+	while(n){
+		n/=10;
+		cnt++;
+	}
+	return cnt;
+}
+
+bool check(int n){
+     int cnt=count(n);
+     cout<<cnt<<endl;
+     int sum=0,temp=n;
+     while(temp){
+     	int r=temp%10;
+     	sum= sum+pow(r,cnt--);
+     	temp/=10;
+
+     }
+    return (sum==n);
+
+}
+int main(){
+
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+    int n;
+    cin>>n;
+    if(check(n))cout<<"Yes\n";
+    else  cout<<"No\n";
+
+   return 0;
+}       
